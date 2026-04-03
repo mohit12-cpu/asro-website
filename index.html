@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASRO — Experience Science Beyond Theory</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* HOME-SPECIFIC */
+.hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy-mid) 55%, #1e5a8c 100%);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(90,158,58,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90,158,58,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+.hero-circle {
+  position: absolute; right: -10%; top: 10%;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(90,158,58,0.12) 0%, transparent 70%);
+  animation: pulse 5s ease-in-out infinite;
+}
+.hero-circle-2 {
+  position: absolute; right: 8%; top: 20%;
+  width: 360px; height: 360px; border-radius: 50%;
+  border: 1px solid rgba(90,158,58,0.2);
+  animation: spin 20s linear infinite;
+}
+.hero-circle-3 {
+  position: absolute; right: 18%; top: 30%;
+  width: 200px; height: 200px; border-radius: 50%;
+  border: 1px dashed rgba(255,255,255,0.1);
+}
+@keyframes pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.08);} }
+@keyframes spin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+.hero-content {
+  position: relative; z-index: 2; padding: 80px 5vw; max-width: 1200px; width: 100%;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(90,158,58,0.18); border: 1px solid rgba(90,158,58,0.4);
+  padding: 6px 18px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--green-light); margin-bottom: 28px;
+}
+.hero-badge span { width: 7px; height: 7px; border-radius: 50%; background: var(--green-light); animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+.hero h1 {
+  font-size: clamp(44px, 6.5vw, 80px); font-weight: 900;
+  color: white; line-height: 1.05; margin-bottom: 24px;
+}
+.hero h1 .line-green { color: var(--green-light); }
+.hero-sub {
+  font-size: 18px; color: rgba(255,255,255,0.7); max-width: 540px;
+  line-height: 1.85; margin-bottom: 40px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 72px; flex-wrap: wrap;
+}
+.hero-stat-num {
+  font-family: 'Raleway', sans-serif; font-weight: 900; font-size: 42px;
+  color: white; line-height: 1;
+}
+.hero-stat-num span { color: var(--green-light); }
+.hero-stat-label {
+  font-size: 13px; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px;
+}
+.hero-divider { width: 1px; background: rgba(255,255,255,0.12); }
+
+/* LOGO BAND */
+.logo-band {
+  background: var(--gray-100);
+  border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);
+  padding: 24px 5vw;
+  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+}
+.logo-band-label { font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; margin-right: 8px; }
+.partner-chip {
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 13px;
+  color: var(--gray-400); letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 6px 18px; border: 1px solid var(--gray-200); border-radius: 100px;
+  transition: .2s;
+}
+.partner-chip:hover { color: var(--navy); border-color: var(--navy-light); }
+
+/* MISSION SECTION */
+.mission-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.mission-visual {
+  position: relative;
+}
+.mission-img-box {
+  width: 100%; aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+  border-radius: var(--radius-lg); overflow: hidden;
+  display: grid; place-items: center;
+  position: relative;
+}
+.mission-img-box .big-logo {
+  width: 70%; opacity: 0.9; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+}
+.mission-img-box::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(90,158,58,0.2) 0%, transparent 60%);
+}
+.mission-badge {
+  position: absolute; bottom: -20px; right: -20px;
+  background: var(--green); color: white; border-radius: var(--radius-md);
+  padding: 20px 24px; box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+.mission-badge .num {
+  font-family: 'Raleway', sans-serif; font-weight: 900; font-size: 32px; color: white;
+}
+.mission-badge .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.8); margin-top: 4px; }
+.mission-points { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+.mission-point {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px; background: var(--off-white);
+  border-radius: var(--radius-md); border-left: 3px solid var(--green);
+  transition: .25s;
+}
+.mission-point:hover { background: var(--green-pale); transform: translateX(4px); }
+.mission-point-icon { font-size: 22px; margin-top: 2px; flex-shrink: 0; }
+.mission-point h4 { font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy-dark); margin-bottom: 4px; }
+.mission-point p { font-size: 14px; color: var(--muted); }
+
+/* SERVICES */
+.services-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+}
+.service-card {
+  padding: 36px 32px; border-radius: var(--radius-md);
+  background: white; border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm); transition: all .28s; position: relative; overflow: hidden;
+}
+.service-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--green); transform: scaleX(0); transform-origin: left; transition: .3s;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: var(--green-pale); display: grid; place-items: center;
+  font-size: 26px; margin-bottom: 22px;
+  border: 1px solid rgba(90,158,58,0.2);
+}
+.service-card h3 { font-size: 19px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; }
+.service-card p { color: var(--muted); font-size: 15px; }
+
+/* EQUIPMENT PREVIEW */
+.equip-strip {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-top: 48px; justify-content: center;
+}
+.equip-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: white; border: 1px solid var(--gray-200);
+  padding: 10px 20px; border-radius: 100px; box-shadow: var(--shadow-sm);
+  font-size: 14px; font-weight: 600; color: var(--navy);
+  transition: .22s;
+}
+.equip-pill:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+.equip-pill span { font-size: 20px; }
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235a9e3a' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.cta-inner {
+  position: relative; z-index: 1; text-align: center; padding: 96px 5vw;
+}
+.cta-inner h2 { font-size: clamp(32px,4vw,52px); font-weight:900; color:white; margin-bottom:20px; }
+.cta-inner h2 span { color: var(--green-light); }
+.cta-inner p { font-size:17px; color:rgba(255,255,255,0.65); max-width:520px; margin:0 auto 40px; }
+.cta-inner .btn-row { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+/* BLOG PREVIEW */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.blog-card { border-radius: var(--radius-md); overflow: hidden; background: white; border: 1px solid var(--gray-200); box-shadow: var(--shadow-sm); transition: .28s; }
+.blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: transparent; }
+.blog-thumb { height: 200px; background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid)); display: grid; place-items: center; position: relative; overflow: hidden; }
+.blog-thumb-orb { width: 100px; height: 100px; background: radial-gradient(circle, rgba(90,158,58,0.4), transparent); border-radius: 50%; }
+.blog-thumb-label { position: absolute; top: 16px; left: 16px; background: var(--green); color: white; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 100px; }
+.blog-body { padding: 24px; }
+.blog-meta { display: flex; gap: 12px; color: var(--muted); font-size: 12px; margin-bottom: 10px; letter-spacing: 0.03em; }
+.blog-card h3 { font-size: 17px; font-weight: 800; color: var(--navy-dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-card p { color: var(--muted); font-size: 14px; }
+.blog-read-more { display: inline-flex; align-items: center; gap: 6px; color: var(--green); font-weight: 700; font-size: 13px; margin-top: 16px; transition: gap .2s; }
+.blog-card:hover .blog-read-more { gap: 10px; }
+
+@media (max-width: 768px) {
+  .mission-grid { grid-template-columns: 1fr; }
+  .hero-stats { gap: 32px; }
+  .hero-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="ASRO Logo">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">ASRO</span>
+      <span class="nav-logo-tagline">Experience Science Beyond Theory</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle-2"></div>
+  <div class="hero-circle-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge anim-up"><span></span>Ward No. 4 · Biratnagar Metropolitan City</div>
+    <h1 class="anim-up anim-d1">
+      Experience<br>Science<br><span class="line-green">Beyond Theory</span>
+    </h1>
+    <p class="hero-sub anim-up anim-d2">
+      ASRO is a non-profit science education initiative run by local youth — bridging classroom learning with hands-on practical science for students across Biratnagar.
+    </p>
+    <div class="hero-actions anim-up anim-d3">
+      <a href="research.html" class="btn btn-primary">Explore Research →</a>
+      <a href="about.html" class="btn btn-outline-white">Learn About Us</a>
+    </div>
+    <div class="hero-stats anim-up anim-d4">
+      <div>
+        <div class="hero-stat-num">7<span>+</span></div>
+        <div class="hero-stat-label">Core Members</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div>
+        <div class="hero-stat-num">14<span>+</span></div>
+        <div class="hero-stat-label">Technical Team</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div>
+        <div class="hero-stat-num">Rs.<span>55</span></div>
+        <div class="hero-stat-label">Per Student, Mobile Lab</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAND -->
+<div class="logo-band">
+  <span class="logo-band-label">Affiliated With</span>
+  <span class="partner-chip">Biratnagar Metropolitan</span>
+  <span class="partner-chip">Ward No. 4 Office</span>
+  <span class="partner-chip">Local Schools</span>
+  <span class="partner-chip">Science Community Nepal</span>
+</div>
+
+<!-- MISSION -->
+<section class="section">
+  <div class="mission-grid">
+    <div class="mission-visual reveal">
+      <div class="mission-img-box">
+        <img src="logo.png" alt="ASRO" class="big-logo">
+      </div>
+      <div class="mission-badge">
+        <div class="num">2024</div>
+        <div class="lbl">Founded</div>
+      </div>
+    </div>
+    <div class="reveal" data-delay="150">
+      <div class="tag">Our Mission</div>
+      <h2 class="section-title">Science <span>For Every</span> Student in Biratnagar</h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);margin-top:20px;font-size:16px;line-height:1.9;">
+        ASRO (Applied Science Research Organization) is a non-profit run by the youth of Ward No. 4. We believe every student deserves access to hands-on science education, regardless of their background.
+      </p>
+      <div class="mission-points">
+        <div class="mission-point">
+          <div class="mission-point-icon">🔬</div>
+          <div>
+            <h4>Practical Learning</h4>
+            <p>Students use real telescopes, microscopes, and lab equipment — learning by doing, not just reading.</p>
+          </div>
+        </div>
+        <div class="mission-point">
+          <div class="mission-point-icon">🚐</div>
+          <div>
+            <h4>Mobile Laboratory</h4>
+            <p>Our travelling lab visits schools at just Rs. 55 per student, removing cost as a barrier to science.</p>
+          </div>
+        </div>
+        <div class="mission-point">
+          <div class="mission-point-icon">🌟</div>
+          <div>
+            <h4>Community Driven</h4>
+            <p>Rooted in Ward No. 4, we collaborate with local offices, schools, and families to build a science culture.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section-alt">
+  <div class="section-header centered">
+    <div class="tag">What We Do</div>
+    <h2 class="section-title">Programs &amp; <span>Services</span></h2>
+    <div class="divider centered"></div>
+    <p class="section-sub" style="margin-top:20px;">From mobile labs to VR classrooms, ASRO delivers cutting-edge science education to students across Biratnagar.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🔭</div>
+      <h3>Instrument Training</h3>
+      <p>Hands-on sessions with telescopes, microscopes, and scientific instruments. Students learn how to operate, calibrate, and record findings.</p>
+    </div>
+    <div class="service-card reveal" data-delay="100">
+      <div class="service-icon">🧪</div>
+      <h3>Chemical Experiments</h3>
+      <p>Supervised chemical reaction experiments with complete safety protocols — gloves, goggles, and ASRO member oversight at all times.</p>
+    </div>
+    <div class="service-card reveal" data-delay="200">
+      <div class="service-icon">🚐</div>
+      <h3>Mobile Lab Program</h3>
+      <p>Science comes to schools. Our mobile lab travels to partner schools, delivering experiments for just Rs. 55 per student.</p>
+    </div>
+    <div class="service-card reveal" data-delay="300">
+      <div class="service-icon">🥽</div>
+      <h3>VR Science Experiences</h3>
+      <p>Immersive virtual reality sessions for topics like atomic structure, planetary orbits, and biological systems — with strict content controls.</p>
+    </div>
+    <div class="service-card reveal" data-delay="400">
+      <div class="service-icon">🌌</div>
+      <h3>Astronomy Awareness</h3>
+      <p>Sky-watching events, telescope nights, and astronomy workshops to spark curiosity about space science in young Nepali students.</p>
+    </div>
+    <div class="service-card reveal" data-delay="500">
+      <div class="service-icon">🤝</div>
+      <h3>Community Programs</h3>
+      <p>Collaborating with Ward No. 4 on cultural events, science fairs, and community outreach to build a science-first culture locally.</p>
+    </div>
+  </div>
+
+  <!-- Equipment strip -->
+  <div class="section-header centered" style="margin-top:72px;margin-bottom:0;">
+    <div class="tag">Our Equipment</div>
+    <h3 style="font-size:22px;font-weight:800;color:var(--navy-dark);">Lab Instruments We Use</h3>
+  </div>
+  <div class="equip-strip">
+    <div class="equip-pill"><span>🔬</span> Microscope</div>
+    <div class="equip-pill"><span>🔭</span> Telescope</div>
+    <div class="equip-pill"><span>⚗️</span> Chemicals</div>
+    <div class="equip-pill"><span>📽️</span> Projector</div>
+    <div class="equip-pill"><span>🥽</span> VR Headset</div>
+    <div class="equip-pill"><span>⚖️</span> Spring Balance</div>
+    <div class="equip-pill"><span>🧫</span> Permanent Slide</div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="section">
+  <div class="section-header">
+    <div class="tag">Latest from ASRO</div>
+    <h2 class="section-title">News &amp; <span>Insights</span></h2>
+    <div class="divider"></div>
+    <p class="section-sub" style="margin-top:20px;">Field reports, science articles, and updates from our team across Biratnagar.</p>
+  </div>
+  <div class="blog-grid">
+    <div class="blog-card reveal">
+      <div class="blog-thumb">
+        <div class="blog-thumb-orb"></div>
+        <span class="blog-thumb-label">Field Report</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta"><span>Apr 2026</span><span>·</span><span>5 min read</span></div>
+        <h3>Mobile Lab Reaches 5 Schools in Ward No. 4</h3>
+        <p>Our travelling science lab brought hands-on experiments to over 300 students this month alone.</p>
+        <a href="publications.html" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal" data-delay="100">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,var(--navy-dark),#1a5c3a)">
+        <div class="blog-thumb-orb"></div>
+        <span class="blog-thumb-label">Technology</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta"><span>Mar 2026</span><span>·</span><span>4 min read</span></div>
+        <h3>VR in Classrooms: ASRO's Digital Safety Guidelines</h3>
+        <p>How we manage VR content and ensure a safe, educational experience for all students.</p>
+        <a href="publications.html" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+    <div class="blog-card reveal" data-delay="200">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#1a3a5c,#2d6e1a)">
+        <div class="blog-thumb-orb"></div>
+        <span class="blog-thumb-label">Education</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta"><span>Feb 2026</span><span>·</span><span>6 min read</span></div>
+        <h3>How Young Scientists Can Prepare for Nepal's Research Sector</h3>
+        <p>Career pathways and skills the next generation of Nepali scientists need today.</p>
+        <a href="publications.html" class="blog-read-more">Read More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="reveal">Start Your Science <span>Journey</span> Today</h2>
+    <p class="reveal" data-delay="100">Join ASRO and experience the power of community-driven science education in Biratnagar.</p>
+    <div class="btn-row reveal" data-delay="200">
+      <a href="contact.html" class="btn btn-primary">Get Involved →</a>
+      <a href="team.html" class="btn btn-outline-white">Meet the Team</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="logo.png" alt="ASRO" style="height:48px;">
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">ASRO</span>
+          <span class="nav-logo-tagline">Experience Science Beyond Theory</span>
+        </div>
+      </div>
+      <p>Applied Science Research Organization — a non-profit science initiative serving Ward No. 4, Biratnagar Metropolitan City.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Organization</h5>
+      <ul>
+        <li><a href="about.html">Our Mission</a></li>
+        <li><a href="about.html#niyamawali">Niyamawali</a></li>
+        <li><a href="team.html">Leadership</a></li>
+        <li><a href="research.html">Programs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#">Ward No. 4, Biratnagar</a></li>
+        <li><a href="#">Morang District, Koshi Province</a></li>
+        <li><a href="#">asro.biratnagar@org.np</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ASRO — Applied Science Research Organization. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
+

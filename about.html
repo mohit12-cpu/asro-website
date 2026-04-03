@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — ASRO</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.about-intro-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center;
+}
+.about-visual {
+  position: relative;
+}
+.about-img {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+  border-radius: var(--radius-lg); aspect-ratio: 4/3;
+  display: grid; place-items: center; overflow: hidden; position: relative;
+}
+.about-img img { width: 60%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5)); }
+.about-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 60% 40%, rgba(90,158,58,0.18) 0%, transparent 65%);
+}
+.stat-bar {
+  position: absolute; bottom: -20px; left: -20px; right: -20px;
+  display: flex; gap: 0;
+}
+.stat-bar-item {
+  flex: 1; background: white; padding: 18px 20px; text-align: center;
+  border: 1px solid var(--gray-200); box-shadow: var(--shadow-md);
+}
+.stat-bar-item:first-child { border-radius: 0 0 0 var(--radius-md); }
+.stat-bar-item:last-child { border-radius: 0 0 var(--radius-md) 0; }
+.stat-bar-num {
+  font-family: 'Raleway', sans-serif; font-weight: 900; font-size: 28px; color: var(--navy-dark);
+}
+.stat-bar-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+.timeline { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
+.timeline-item { display: flex; gap: 24px; position: relative; padding-bottom: 28px; }
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-left { display: flex; flex-direction: column; align-items: center; }
+.timeline-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green); border: 3px solid var(--green-pale); flex-shrink: 0; margin-top: 4px;
+}
+.timeline-line {
+  width: 2px; flex: 1; background: var(--gray-200); margin-top: 4px;
+}
+.timeline-item:last-child .timeline-line { display: none; }
+.timeline-content h4 { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 15px; color: var(--navy-dark); margin-bottom: 4px; }
+.timeline-content p { font-size: 14px; color: var(--muted); }
+
+/* NIYAMAWALI */
+.niyamawali-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
+}
+.rule-card {
+  background: white; border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md); padding: 28px;
+  box-shadow: var(--shadow-sm); transition: .28s;
+  border-left: 4px solid var(--green);
+}
+.rule-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.rule-card h4 { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 16px; color: var(--navy-dark); margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.rule-card p { font-size: 14px; color: var(--muted); line-height: 1.8; }
+
+/* EXPECTATIONS */
+.expect-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;
+}
+.expect-card {
+  background: var(--navy-dark); border-radius: var(--radius-md); padding: 32px;
+  color: white; transition: .28s; position: relative; overflow: hidden;
+}
+.expect-card::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(90,158,58,0.12);
+}
+.expect-card:hover { background: var(--navy-mid); transform: translateY(-4px); }
+.expect-icon { font-size: 36px; margin-bottom: 18px; }
+.expect-card h3 { font-size: 18px; font-weight: 800; color: white; margin-bottom: 10px; }
+.expect-card p { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.8; }
+
+@media (max-width: 768px) {
+  .about-intro-grid { grid-template-columns: 1fr; }
+  .stat-bar { position: static; margin-top: 20px; }
+  .about-visual { margin-bottom: 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="ASRO Logo">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">ASRO</span>
+      <span class="nav-logo-tagline">Experience Science Beyond Theory</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">Home / <span>About</span></div>
+    <h1>About <span>ASRO</span></h1>
+    <p>A non-profit science education initiative led by local youth of Ward No. 4, Biratnagar — bridging traditional learning with modern science.</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="section">
+  <div class="about-intro-grid">
+    <div class="about-visual reveal">
+      <div class="about-img">
+        <img src="logo.png" alt="ASRO">
+      </div>
+      <div class="stat-bar">
+        <div class="stat-bar-item">
+          <div class="stat-bar-num" style="color:var(--green);">7</div>
+          <div class="stat-bar-lbl">Core Members</div>
+        </div>
+        <div class="stat-bar-item" style="border-left:0;">
+          <div class="stat-bar-num" style="color:var(--navy);">14+</div>
+          <div class="stat-bar-lbl">Technical Team</div>
+        </div>
+        <div class="stat-bar-item" style="border-left:0;">
+          <div class="stat-bar-num" style="color:var(--green);">100+</div>
+          <div class="stat-bar-lbl">Students Reached</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" data-delay="150" style="padding-top:20px;">
+      <div class="tag">Who We Are</div>
+      <h2 class="section-title">Science Is for <span>Everyone</span></h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);margin-top:20px;font-size:16px;line-height:1.9;">
+        ASRO (Applied Science Research Organization) is a non-profit educational campaign conducted by the local youth and students of Ward No. 4, Biratnagar Metropolitan City. Our primary goal is to connect traditional classroom science with practical, hands-on modern science.
+      </p>
+      <p style="color:var(--muted);margin-top:16px;font-size:16px;line-height:1.9;">
+        We operate with 7 core members and a skilled technical team of 14, all dedicated volunteers committed to making quality science education accessible to every student in our community.
+      </p>
+      <div class="timeline" style="margin-top:36px;">
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content"><h4>Founded in Ward No. 4</h4><p>ASRO was established by local youth passionate about bridging science education gaps.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content"><h4>Mobile Lab Launched</h4><p>First mobile lab program delivered to partner schools at Rs. 55 per student.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="timeline-content"><h4>VR Program Introduced</h4><p>Virtual reality sessions integrated into our science education offerings.</p></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-left"><div class="timeline-dot"></div></div>
+          <div class="timeline-content"><h4>Growing Community</h4><p>Expanding team, partnerships, and student reach across Biratnagar in 2026.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NIYAMAWALI -->
+<section class="section section-alt" id="niyamawali">
+  <div class="section-header centered">
+    <div class="tag">Governance</div>
+    <h2 class="section-title">Our Internal <span>Niyamawali</span></h2>
+    <div class="divider centered"></div>
+    <p class="section-sub" style="margin-top:20px;">The rules and constitution that guide how ASRO operates with integrity, transparency, and safety.</p>
+  </div>
+  <div class="niyamawali-grid">
+    <div class="rule-card reveal">
+      <h4>🏛️ Law Administration</h4>
+      <p>A strict internal constitution (Niyamawali) has been prepared and formally approved by the Law Administrator. All members are bound by this document.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="80">
+      <h4>👑 Supreme Authority</h4>
+      <p>Final decisions are made through collective consensus of the 7 core members. No single individual can override the group decision.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="160">
+      <h4>⚖️ Discipline &amp; Expulsion</h4>
+      <p>Members who breach organizational confidentiality or cause financial harm can be expelled (Kick out) at any time by core member vote.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="240">
+      <h4>🏠 Asset Security</h4>
+      <p>Equipment purchased from ward or organizational funds becomes organizational property. Members assigned equipment are responsible for its safety.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="320">
+      <h4>🧪 Chemical Safety</h4>
+      <p>Students must wear Gloves and Goggles during all chemical experiments. No chemicals can be handled without supervision from an ASRO member.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="400">
+      <h4>💰 Equipment Insurance</h4>
+      <p>Expensive equipment like VR headsets — if broken by students while using — will be repaired from the organizational fund, not billed to the student.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="480">
+      <h4>📱 Digital Content Control</h4>
+      <p>VR content must be strictly educational. Content is curated and controlled by the Secretary and Law Administrator — no unauthorized material allowed.</p>
+    </div>
+    <div class="rule-card reveal" data-delay="560">
+      <h4>📢 Parental Advocacy</h4>
+      <p>Parents who support their children's science journey are acknowledged and celebrated by the ward as key stakeholders in ASRO's mission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPECTATIONS FROM WARD -->
+<section class="section">
+  <div class="section-header centered">
+    <div class="tag">Expectations from Ward</div>
+    <h2 class="section-title">What We Need from <span>Ward No. 4</span></h2>
+    <div class="divider centered"></div>
+    <p class="section-sub" style="margin-top:20px;">ASRO formally requests the following support from the Ward Office to effectively carry out our science education mission.</p>
+  </div>
+  <div class="expect-grid">
+    <div class="expect-card reveal">
+      <div class="expect-icon">🔭</div>
+      <h3>Equipment Procurement</h3>
+      <p>Initial funding for a telescope, microscope, and spring balance — the core instruments needed for our foundational lab setup and mobile program.</p>
+    </div>
+    <div class="expect-card reveal" data-delay="100">
+      <div class="expect-icon">📋</div>
+      <h3>Recommendation &amp; Coordination</h3>
+      <p>Official letters of recommendation and coordination with nearby schools for scheduling our programs and gaining institutional access.</p>
+    </div>
+    <div class="expect-card reveal" data-delay="200">
+      <div class="expect-icon">🎖️</div>
+      <h3>Advocacy &amp; Recognition</h3>
+      <p>The ward officially recognizing parents' efforts in supporting their children's participation in ASRO programs as a community achievement.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="logo.png" alt="ASRO" style="height:48px;">
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">ASRO</span>
+          <span class="nav-logo-tagline">Experience Science Beyond Theory</span>
+        </div>
+      </div>
+      <p>Applied Science Research Organization — Ward No. 4, Biratnagar Metropolitan City, Nepal.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>About</h5>
+      <ul>
+        <li><a href="about.html">Our Story</a></li>
+        <li><a href="about.html#niyamawali">Niyamawali</a></li>
+        <li><a href="team.html">Leadership</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="#">Ward No. 4, Biratnagar</a></li>
+        <li><a href="#">asro.biratnagar@org.np</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ASRO — Applied Science Research Organization. All rights reserved.</p>
+    <div class="footer-bottom-links">
+      <a href="contact.html">Contact</a>
+      <a href="team.html">Team</a>
+    </div>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
+

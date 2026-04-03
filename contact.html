@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ASRO</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: flex-start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 20px; }
+.contact-card {
+  background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+  padding: 24px 28px; box-shadow: var(--shadow-sm);
+  display: flex; gap: 20px; align-items: flex-start; transition: .25s;
+  border-left: 4px solid var(--green);
+}
+.contact-card:hover { transform: translateX(4px); box-shadow: var(--shadow-md); }
+.contact-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+.contact-card h4 {
+  font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 13px;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); margin-bottom: 6px;
+}
+.contact-card p { color: var(--muted); font-size: 15px; line-height: 1.8; }
+.contact-card strong { color: var(--navy-dark); }
+
+.map-placeholder {
+  background: linear-gradient(135deg, var(--navy-dark), var(--navy-mid));
+  border-radius: var(--radius-md); height: 220px; overflow: hidden;
+  display: grid; place-items: center; position: relative; margin-top: 20px;
+}
+.map-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(90,158,58,0.2) 0%, transparent 65%);
+}
+.map-label {
+  position: relative; z-index: 1; text-align: center;
+  color: white;
+}
+.map-label .icon { font-size: 36px; margin-bottom: 8px; }
+.map-label h4 { font-size: 16px; font-weight: 800; }
+.map-label p { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+/* FORM */
+.contact-form-wrap {
+  background: white; border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
+  padding: 48px; box-shadow: var(--shadow-md);
+}
+.form-header { margin-bottom: 36px; }
+.form-header h2 { font-size: 28px; font-weight: 900; color: var(--navy-dark); margin-bottom: 8px; }
+.form-header h2 span { color: var(--green); }
+.form-header p { color: var(--muted); font-size: 15px; }
+
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group label {
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--navy);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: var(--off-white); border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm); padding: 13px 16px;
+  color: var(--text); font-family: 'Source Sans 3', sans-serif; font-size: 15px;
+  transition: .22s; outline: none; resize: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--green); background: white;
+  box-shadow: 0 0 0 4px rgba(90,158,58,0.1);
+}
+.form-group textarea { height: 140px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-grid { display: flex; flex-direction: column; gap: 20px; }
+
+.submit-btn {
+  width: 100%; padding: 15px; background: var(--green);
+  color: white; font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 15px;
+  border-radius: var(--radius-sm); border: none; cursor: pointer;
+  letter-spacing: 0.04em; transition: .25s;
+  box-shadow: 0 6px 20px rgba(90,158,58,0.35);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.submit-btn:hover { background: var(--green-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(90,158,58,0.45); }
+
+.success-banner {
+  display: none; background: var(--green-pale); border: 1px solid rgba(90,158,58,0.3);
+  border-radius: var(--radius-sm); padding: 16px 20px;
+  color: var(--green); font-weight: 600; font-size: 15px;
+  align-items: center; gap: 10px; margin-top: 16px;
+}
+
+/* Collab chips */
+.collab-section {
+  margin-top: 28px; padding: 22px; background: var(--off-white);
+  border: 1px solid var(--gray-200); border-radius: var(--radius-md);
+}
+.collab-section h4 { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 14px; color: var(--navy-dark); margin-bottom: 14px; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-size: 12px; font-weight: 700; padding: 5px 14px; border-radius: 100px;
+  background: white; border: 1.5px solid var(--gray-200); color: var(--navy);
+  transition: .2s;
+}
+.chip:hover { border-color: var(--green); color: var(--green); }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+.faq-item {
+  border-bottom: 1px solid var(--gray-200); overflow: hidden;
+}
+.faq-q {
+  width: 100%; text-align: left; padding: 20px 0;
+  font-family: 'Raleway', sans-serif; font-weight: 700; font-size: 16px;
+  color: var(--navy-dark); background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--green); }
+.faq-q .arrow { transition: transform .3s; flex-shrink: 0; color: var(--green); }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+.faq-a p { padding: 0 0 20px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.faq-item.open .faq-a { max-height: 200px; }
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 28px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="ASRO Logo">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">ASRO</span>
+      <span class="nav-logo-tagline">Experience Science Beyond Theory</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="publications.html">Publications</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
+  </ul>
+  <div class="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-content">
+    <div class="breadcrumb">Home / <span>Contact</span></div>
+    <h1>Get in <span>Touch</span></h1>
+    <p>Whether you're a school, student, parent, or potential partner — we'd love to hear from you.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="contact-grid">
+
+    <!-- INFO -->
+    <div>
+      <div class="tag">Contact Information</div>
+      <h2 class="section-title" style="font-size:28px;">We're Based in <span>Biratnagar</span></h2>
+      <div class="divider" style="margin-bottom:28px;"></div>
+
+      <div class="contact-info">
+        <div class="contact-card reveal">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p><strong>Ward No. 4, Biratnagar Metropolitan City</strong><br>Morang District, Koshi Province, Nepal</p>
+          </div>
+        </div>
+        <div class="contact-card reveal" data-delay="80">
+          <div class="contact-icon">🏛️</div>
+          <div>
+            <h4>Affiliated Ward Office</h4>
+            <p><strong>Ward Office No. 4</strong><br>Biratnagar Mahanagar Palika</p>
+          </div>
+        </div>
+        <div class="contact-card reveal" data-delay="160">
+          <div class="contact-icon">📧</div>
+          <div>
+            <h4>Email</h4>
+            <p><strong>asro.biratnagar@org.np</strong><br>lawadmin@asro.org.np</p>
+          </div>
+        </div>
+        <div class="contact-card reveal" data-delay="240">
+          <div class="contact-icon">👥</div>
+          <div>
+            <h4>Organization</h4>
+            <p>7 Core Members · 14+ Technical Team<br>Non-profit voluntary organization</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-placeholder reveal" data-delay="300">
+        <div class="map-label">
+          <div class="icon">📍</div>
+          <h4>Ward No. 4, Biratnagar</h4>
+          <p>Morang District, Koshi Province, Nepal</p>
+        </div>
+      </div>
+
+      <div class="collab-section reveal" data-delay="350">
+        <h4>We Collaborate With</h4>
+        <div class="chip-row">
+          <span class="chip">Schools &amp; Colleges</span>
+          <span class="chip">NGOs</span>
+          <span class="chip">Government Bodies</span>
+          <span class="chip">Science Communities</span>
+          <span class="chip">Donors &amp; Sponsors</span>
+          <span class="chip">Volunteer Educators</span>
+          <span class="chip">Media &amp; Press</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form-wrap reveal" data-delay="100">
+      <div class="form-header">
+        <h2>Send Us a <span>Message</span></h2>
+        <p>Fill out the form and our team will get back to you within 2–3 working days.</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Ramesh" id="fname">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Sharma" id="lname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="ramesh@example.com" id="email">
+        </div>
+        <div class="form-group">
+          <label>Phone (Optional)</label>
+          <input type="tel" placeholder="+977 98XXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>Organization / School (Optional)</label>
+          <input type="text" placeholder="Your school or organization name">
+        </div>
+        <div class="form-group">
+          <label>Reason for Contact</label>
+          <select>
+            <option value="">Select a reason...</option>
+            <option>General Enquiry</option>
+            <option>School Partnership</option>
+            <option>Mobile Lab Request</option>
+            <option>Volunteer / Join ASRO</option>
+            <option>Donation / Sponsorship</option>
+            <option>Media / Press</option>
+            <option>Ward / Government Collaboration</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea placeholder="Tell us how we can help, or how you'd like to collaborate with ASRO..." id="message"></textarea>
+        </div>
+        <button class="submit-btn" onclick="handleSubmit()">
+          Send Message <span>→</span>
+        </button>
+        <div class="success-banner" id="successBanner">
+          ✅ Thank you! Your message has been sent. We'll get back to you within 2–3 working days.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt">
+  <div class="section-header centered">
+    <div class="tag">FAQ</div>
+    <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    <div class="divider centered"></div>
+  </div>
+  <div style="max-width:720px;margin:0 auto;">
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How can my school partner with ASRO? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>Schools can partner with ASRO by filling out our contact form above or reaching out directly to our Secretary, Prakash Thakur. We offer the mobile lab program for just Rs. 55 per student, bringing science experiments directly to your campus.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is ASRO free to join for students? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>ASRO's programs are designed to be affordable. Mobile lab sessions cost Rs. 55 per student. Some community events are completely free. We believe cost should never be a barrier to science education.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How can I volunteer or join the ASRO team? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>We welcome passionate individuals who share our mission. Contact us via the form above or reach out to Councillor Sneha Pokharel through our Planning &amp; Partnership channel. We look for science enthusiasts, educators, and skilled technical volunteers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does ASRO accept donations or sponsorships? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>Yes! As a non-profit, ASRO relies on community support to fund equipment, mobile lab operations, and new programs. Please contact us with your interest in sponsorship and our Treasurer Deepshika Phuyal's team will connect with you.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What safety measures does ASRO use in experiments? <span class="arrow">▾</span></button>
+        <div class="faq-a"><p>All ASRO experiments are conducted under supervision of trained ASRO members. Chemical experiments require mandatory gloves and goggles. VR content is curated by our Secretary and Law Administrator. Student safety is always our highest priority.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <img src="logo.png" alt="ASRO" style="height:48px;">
+        <div class="nav-logo-text"><span class="nav-logo-name">ASRO</span><span class="nav-logo-tagline">Experience Science Beyond Theory</span></div>
+      </div>
+      <p>Applied Science Research Organization — Ward No. 4, Biratnagar Metropolitan City, Nepal.</p>
+    </div>
+    <div class="footer-col"><h5>Pages</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="research.html">Research</a></li><li><a href="publications.html">Publications</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Get Involved</h5><ul><li><a href="#">Join ASRO</a></li><li><a href="#">Partner With Us</a></li><li><a href="#">Donate</a></li><li><a href="#">Mobile Lab Request</a></li></ul></div>
+    <div class="footer-col"><h5>Contact</h5><ul><li><a href="#">Ward No. 4, Biratnagar</a></li><li><a href="#">asro.biratnagar@org.np</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 ASRO — Applied Science Research Organization. All rights reserved.</p>
+    <div class="footer-bottom-links"><a href="about.html">About</a><a href="team.html">Team</a></div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function handleSubmit() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!fname || !email || !message) {
+    alert('Please fill in your name, email, and message before sending.');
+    return;
+  }
+  const banner = document.getElementById('successBanner');
+  banner.style.display = 'flex';
+  banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>
+
