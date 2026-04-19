@@ -48,7 +48,7 @@
   width: 84px; height: 84px; border-radius: 50%;
   margin: 0 auto 18px; display: grid; place-items: center;
   font-family: 'Raleway', sans-serif; font-size: 30px; font-weight: 900; color: white;
-  position: relative;
+  position: relative; overflow: hidden;
 }
 .avatar::before {
   content: ''; position: absolute; inset: -3px; border-radius: 50%;
@@ -90,7 +90,7 @@
 }
 .leader-avatar {
   width: 96px; height: 96px; border-radius: 50%;
-  margin: 0 auto 16px; position: relative; z-index: 1;
+  margin: 0 auto 16px; position: relative; z-index: 1; overflow: hidden;
 }
 .leader-avatar .ring {
   position: absolute; inset: -4px; border-radius: 50%;
@@ -122,7 +122,7 @@
   width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 12px;
   display: grid; place-items: center;
   font-family: 'Raleway', sans-serif; font-weight: 900; font-size: 22px; color: white;
-  background: linear-gradient(135deg, var(--navy), var(--green));
+  background: linear-gradient(135deg, var(--navy), var(--green)); overflow: hidden;
 }
 .board-card h4 { font-family: 'Raleway', sans-serif; font-weight: 800; font-size: 15px; color: var(--navy-dark); }
 .board-card p { font-size: 12px; color: var(--muted); margin-top: 4px; }
@@ -196,24 +196,27 @@
     <div class="divider"></div>
   </div>
   <div class="leadership-row">
+    <!-- Jeevan Sharma -->
     <div class="leader-card reveal">
       <div class="leader-card-top">
         <div class="leader-avatar">
           <div class="ring"></div>  
-          <img src="Team Photo/Jeevan Sharma.jpeg" alt="Jeevan Sharma" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+          <img src="Team Photo/Jeevan Sharma.jpeg" alt="Jeevan Sharma" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <h3>Jeevan Sharma</h3>
         <div class="role">Chairman</div>
       </div>
+      
       <div class="leader-card-body">
         <p>Leads ASRO's vision and strategy. Responsible for external relations, partnerships, and the overall direction of the organization's science education mission in Biratnagar.</p>
       </div>
     </div>
+    <!-- Alok Singh -->
     <div class="leader-card reveal" data-delay="120">
       <div class="leader-card-top">
         <div class="leader-avatar">
           <div class="ring"></div>
-          <div class="inner" style="background:linear-gradient(135deg,#1a3a5c,#5a9e3a);">AS</div>
+          <img src="Team Photo/Jeevan Sharma.jpeg" alt="Alok Singh" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <h3>Alok Singh</h3>
         <div class="role">Co-Founder</div>
@@ -222,11 +225,12 @@
         <p>Co-founded ASRO with the vision of making practical science accessible for all students. Plays a key role in shaping organizational culture and growth strategy.</p>
       </div>
     </div>
+    <!-- Shreyaas Shah -->
     <div class="leader-card reveal" data-delay="240">
       <div class="leader-card-top">
         <div class="leader-avatar">
           <div class="ring"></div>
-          <div class="inner" style="background:linear-gradient(135deg,#0f4a2a,#1a3a5c);">SS</div>
+          <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.42 PM.jpeg" alt="Shreyaas Shah" style="width:100%; height:100%; object-fit:cover;">
         </div>
         <h3>Shreyaas Shah</h3>
         <div class="role">Managing Director</div>
@@ -243,17 +247,19 @@
     <span class="team-section-label">2 Members</span>
   </div>
   <div class="team-grid" style="border-radius:0 0 var(--radius-md) var(--radius-md);">
+    <!-- Prakash Thakur -->
     <div class="team-card reveal">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,var(--navy),var(--navy-light));">PT</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.41 PM (2).jpeg" alt="Prakash Thakur" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Prakash Thakur</h3>
       <div class="team-role">Secretary</div>
       <p class="team-desc">Handles administrative management, communication, and content oversight — including VR material curation and official correspondence.</p>
     </div>
+    <!-- Sandesh Rana -->
     <div class="team-card reveal" data-delay="100">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,var(--green),#1a5c3a);">SR</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.41 PM.jpeg" alt="Sandesh Rana" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Sandesh Rana</h3>
       <div class="team-role">Law Administrator</div>
@@ -267,9 +273,10 @@
     <span class="team-section-label">1 Member</span>
   </div>
   <div class="team-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr));border-radius:0 0 var(--radius-md) var(--radius-md);">
+    <!-- Sneha Pokharel -->
     <div class="team-card reveal">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,#1a3a5c,#5a9e3a);">SP</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.41 PM (1).jpeg" alt="Sneha Pokharel" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Sneha Pokharel</h3>
       <div class="team-role">Councillor &amp; Partnership</div>
@@ -284,23 +291,27 @@
   </div>
   <div style="padding:24px;background:var(--off-white);border:1px solid var(--gray-200);border-top:0;border-radius:0 0 var(--radius-md) var(--radius-md);">
     <div class="board-grid">
+      <!-- Deepshika Phuyal -->
       <div class="board-card reveal">
-        <div class="board-avatar">DP</div>
+        <div class="board-avatar"><img src="Team Photo/Deepshika Phuyal.jpeg" alt="Deepshika Phuyal" style="width:100%; height:100%; object-fit:cover;"></div>
         <h4>Deepshika Phuyal</h4>
         <p>Board Member</p>
       </div>
+      <!-- Sadana Bhattari -->
       <div class="board-card reveal" data-delay="80">
-        <div class="board-avatar" style="background:linear-gradient(135deg,#0f4a2a,var(--navy));">SB</div>
+        <div class="board-avatar"><img src="Team Photo/Sadana Bhattari.jpeg" alt="Sadana Bhattari" style="width:100%; height:100%; object-fit:cover;"></div>
         <h4>Sadana Bhattari</h4>
         <p>Board Member</p>
       </div>
+      <!-- Puja Gupta -->
       <div class="board-card reveal" data-delay="160">
-        <div class="board-avatar" style="background:linear-gradient(135deg,var(--navy-light),var(--green));">PG</div>
+        <div class="board-avatar"><img src="Team Photo/Puja Gupta.jpeg" alt="Puja Gupta" style="width:100%; height:100%; object-fit:cover;"></div>
         <h4>Puja Gupta</h4>
         <p>Board Member</p>
       </div>
+      <!-- Aarati Pokharel -->
       <div class="board-card reveal" data-delay="240">
-        <div class="board-avatar" style="background:linear-gradient(135deg,#1a5c3a,var(--navy));">AP</div>
+        <div class="board-avatar"><img src="Team Photo/Aarati Pokharel.jpeg" alt="Aarati Pokharel" style="width:100%; height:100%; object-fit:cover;"></div>
         <h4>Aarati Pokharel</h4>
         <p>Board Member</p>
       </div>
@@ -313,25 +324,28 @@
     <span class="team-section-label">3 Members</span>
   </div>
   <div class="team-grid" style="border-radius:0 0 var(--radius-md) var(--radius-md);">
+    <!-- Aashutosh Sardar -->
     <div class="team-card reveal">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,#1a3a5c,#5a2d82);">AS</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.40 PM (1).jpeg" alt="Aashutosh Sardar" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Aashutosh Sardar</h3>
       <div class="team-role">Creative Director</div>
       <p class="team-desc">Leads the visual identity, design direction, and creative output of ASRO. Responsible for all branding, materials, and creative campaigns.</p>
     </div>
+    <!-- Mohit Shrestha -->
     <div class="team-card reveal" data-delay="100">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,#0a4a7c,var(--green));">MS</div>
+        <img src="Team Photo/Mohit Shrestha.jpg" alt="Mohit Shrestha" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Mohit Shrestha</h3>
       <div class="team-role">Developer</div>
       <p class="team-desc">Builds and maintains ASRO's digital infrastructure — website, tools, and technical systems that support the organization's programs and outreach.</p>
     </div>
+    <!-- Naresh Magar -->
     <div class="team-card reveal" data-delay="200">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,var(--green),#1a3a5c);">NM</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.40 PM.jpeg" alt="Naresh Magar" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Naresh Magar</h3>
       <div class="team-role">Graphic Designer</div>
@@ -345,17 +359,19 @@
     <span class="team-section-label">2 Members</span>
   </div>
   <div class="team-grid" style="border-radius:0 0 var(--radius-md) var(--radius-md);">
+    <!-- Jiwan Dahal -->
     <div class="team-card reveal">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,var(--navy),var(--green));">JD</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.39 PM (1).jpeg" alt="Jiwan Dahal" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Jiwan Dahal</h3>
       <div class="team-role">Host</div>
       <p class="team-desc">ASRO's public face at events, programs, and community functions. Hosts science sessions, public talks, and engagement events to inspire students.</p>
     </div>
+    <!-- Aryan Urawn -->
     <div class="team-card reveal" data-delay="100">
       <div class="avatar">
-        <div class="avatar-inner" style="background:linear-gradient(135deg,var(--green),var(--navy-mid));">AU</div>
+        <img src="Team Photo/WhatsApp Image 2026-04-04 at 4.07.39 PM.jpeg" alt="Aryan Urawn" style="width:100%; height:100%; object-fit:cover;">
       </div>
       <h3>Aryan Urawn</h3>
       <div class="team-role">Marketing Management</div>
