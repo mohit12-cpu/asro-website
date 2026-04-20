@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asro-website.com/sitemap.xml
