@@ -1,4 +1,15 @@
+# ASRO - Applied Science & Research Organization
+# Robots.txt for SEO optimization
+
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://asro-website.com/sitemap.xml
+
+# Disallow admin paths (if any in future)
+Disallow: /admin/
+Disallow: /private/
+
+# Crawl-delay for bots
+Crawl-delay: 10
